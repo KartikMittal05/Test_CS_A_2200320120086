@@ -6,30 +6,43 @@
   <title>Login</title>
   <style>
     body {
-      background-color: #22f210;
-      font-family: Arial, sans-serif;
+      background-color: #e0f7fa; /* Light cyan background */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Full viewport height */
+      margin: 0;
     }
     table {
       margin: auto;
       border-collapse: collapse;
-      width: 40%;
-      height: auto; 
-      padding: 20px; 
+      width: 400px; /* Increased width for better layout */
       background-color: white;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden; /* Rounded corners */
     }
     th, td {
-      padding: 12px; 
+      padding: 15px; /* Increased padding for better spacing */
       text-align: left;
     }
+    th {
+      background-color: #4CAF50; /* Green header */
+      color: white;
+    }
     input[type="text"], input[type="password"] {
-      width: calc(100% - 16px); 
-      padding: 10px; 
+      width: calc(100% - 20px); /* Adjusted width for increased padding */
+      padding: 12px; /* Increased padding for better usability */
       margin: 8px 0; 
       border: 1px solid #ccc;
       border-radius: 4px;
       box-sizing: border-box; 
+      transition: border-color 0.3s;
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+      border-color: #4CAF50; /* Green border on focus */
+      outline: none; /* Remove default outline */
     }
     input[type="button"], input[type="reset"] {
       background-color: #4CAF50;
@@ -39,11 +52,43 @@
       border-radius: 4px;
       cursor: pointer;
       margin-top: 10px; 
+      transition: background-color 0.3s, transform 0.3s; /* Transition for hover effects */
     }
     input[type="button"]:hover, input[type="reset"]:hover {
       background-color: #45a049;
+      transform: translateY(-2px); /* Slight lift effect */
+    }
+    input[type="button"]:active, input[type="reset"]:active {
+      transform: translateY(0); /* Reset lift on click */
+    }
+    /* Additional styling for the form */
+    h2 {
+      text-align: center;
+      color: #333;
+      margin: 0; /* Adjusted margin */
     }
   </style>
+</head>
+<body>
+  <form name="login" onsubmit="return validateForm()">
+    <table>
+      <tr>
+        <th colspan="2"><h2>Login</h2></th>
+      </tr>
+      <tr>
+        <th>Username</th>
+        <td><input type="text" name="uname" placeholder="Enter your username"></td>
+      </tr>
+      <tr>
+        <th>Password</th>
+        <td><input type="password" name="password" placeholder="Enter your password"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="LOGIN" onclick="validateForm()"></td>
+        <td><input type="reset" value="RESET"></td>
+      </tr>
+    </table>
+  </form>
   <script>
     function validateForm() {
       var username = document.forms["login"]["uname"].value;
@@ -61,23 +106,5 @@
       return false; 
     }
   </script>
-</head>
-<body>
-  <form name="login" onsubmit="return validateForm()">
-    <table>
-      <tr>
-        <th>Username </th>
-        <td><input type="text" name="uname"></td>
-      </tr>
-      <tr>
-        <th>Password </th>
-        <td><input type="password" name="password"></td>
-      </tr>
-      <tr>
-        <td><input type="button" value="LOGIN" onclick="validateForm()"></td>
-        <td><input type="reset" value="RESET"></td>
-      </tr>
-    </table>
-  </form>
 </body>
 </html>
